@@ -63,8 +63,8 @@ $scope.taskList = {};
 		$http.post("http://localhost:1020/api/updateToDo", $scope.toDoModel)
 		.then(function(response) {
 		    console.log(response);
-		    if(null!=response.data){
-		    	//$localStorage.email = response.data.id;
+		    if(""!=response.data){
+		    	$scope.toDoModelFlag = false;
 		    }
 		  }, function(response) {
 			    console.log(response);			  

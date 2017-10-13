@@ -51,7 +51,7 @@ public class ToDoServices {
 			toDo.setTaskList(toDo.getTaskList());
 			toDoRepo.save(toDo);
 		} else {
-			createToDoForUser(toDoModel.getId(), toDoModel);
+			toDo = createToDoForUser(toDoModel.getId(), toDoModel);
 		}
 		return toDo;
 	}
