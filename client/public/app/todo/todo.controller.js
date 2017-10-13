@@ -11,8 +11,8 @@ myApp.controller('ToDoCtrl', function($scope, $http, $rootScope, $localStorage, 
 		    	$scope.toDoModelFlag = true;
 		    } else {
 		    	$scope.toDoModelFlag = false;
-		    	$scope.toDoModel = response.data;
-		    	$scope.taskList = response.data.taskList;
+		    	$scope.toDoModelList = response.data;
+		    	//$scope.taskList = response.data.taskList;
 		    }
 		  }, function(response) {
 			    console.log(response);			  

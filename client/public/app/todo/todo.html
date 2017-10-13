@@ -3,7 +3,7 @@
 		<h4>
 			<div class="col-md-6" style="text-align: left">Welcome
 				{{userId}}</div>
-			<div class="col-md-3 btn btn-primary" ng-click="goToDos()">To Dos</div>
+			<div class="col-md-3 btn btn-primary" ng-click="goProfile()">Profile</div>
 			<div class="col-md-3 btn btn-info" ng-click="doLogout()"style="text-align: left">
 				Logout<span class="glyphicon glyphicon-power"></span>
 			</div>
@@ -20,14 +20,16 @@
 					<th style="text-align: center">Completed?</th>
 					<th style="text-align: center">Remove?</th>
 				</tr>
-				<tr ng-repeat="(key, value) in toDoModel.taskList"
-					ng-model="toDoModel">
-					<td>{{key | date:'dd-MM-yyyy HH:mm:ss'}}</td>
-					<td><input style="width: 90%" type="text"
-						ng-model="value.toDo" /></td>
-					<td><input type="checkbox" ng-model="value.isCompleted" /></td>
-					<td><button ng-click="deleteToDo(key)">X</button></td>
-				</tr>
+				<tbody ng-repeat="toDoModel in toDoModelList">
+					<tr ng-repeat="(key, value) in toDoModel.taskList"
+						ng-model="toDoModel">
+						<td>{{key | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+						<td><input style="width: 90%" type="text"
+							ng-model="value.toDo" /></td>
+						<td><input type="checkbox" ng-model="value.isCompleted" /></td>
+						<td><button ng-click="deleteToDo(key)">X</button></td>
+					</tr>
+				</tbody>
 			</table>
 			<button ng-click="updateToDo()">Save Changes</button>
 			<div class="panel panel-default">
