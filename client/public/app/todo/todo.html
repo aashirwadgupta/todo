@@ -1,0 +1,53 @@
+<div ng-Controller="ToDoCtrl" ng-init="init()">
+	<div class="row">
+		<h4>
+			<div class="col-md-6" style="text-align: left">Welcome
+				{{userId}}</div>
+			<div class="col-md-3 btn btn-primary" ng-click="goToDos()">To Dos</div>
+			<div class="col-md-3 btn btn-info" ng-click="doLogout()"style="text-align: left">
+				Logout<span class="glyphicon glyphicon-power"></span>
+			</div>
+		</h4>
+	</div>
+	<br /> <br />
+	<div class="row">
+		<div ng-if="!toDoModelFlag">
+			<h3>Below is your To Do List for Today</h3>
+			<table class="table table-bordered table-stripped">
+				<tr>
+					<th style="text-align: center">Created At</th>
+					<th style="text-align: center">To Do item</th>
+					<th style="text-align: center">Completed?</th>
+					<th style="text-align: center">Remove?</th>
+				</tr>
+				<tr ng-repeat="(key, value) in toDoModel.taskList"
+					ng-model="toDoModel">
+					<td>{{key | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+					<td><input style="width: 90%" type="text"
+						ng-model="value.toDo" /></td>
+					<td><input type="checkbox" ng-model="value.isCompleted" /></td>
+					<td><button ng-click="deleteToDo(key)">X</button></td>
+				</tr>
+			</table>
+			<button ng-click="updateToDo()">Save Changes</button>
+			<div class="panel panel-default">
+				<div class="panel-heading">Add A ToDo</div>
+				<div class="panel-body">
+					<input type="checkbox" ng-model="isDone" ng-true-value="true"
+						ng-false-value="false" /> <input type="text" ng-model="toDoText" />
+					<button ng-click="addPendingToDo(isDone, toDoText)">Add It</button>
+				</div>
+			</div>
+		</div>
+		<div ng-if="toDoModelFlag">
+			<div class="panel panel-default">
+				<div class="panel-heading">Add A ToDo</div>
+				<div class="panel-body">
+					<input type="checkbox" ng-model="isDone" ng-true-value="true"
+						ng-false-value="false" /> <input type="text" ng-model="toDoText" />
+					<button ng-click="addPendingToDo(isDone, toDoText)">Add It</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

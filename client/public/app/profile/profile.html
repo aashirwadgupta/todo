@@ -1,0 +1,45 @@
+<div class="row" ng-Controller="ProfileCtrl" ng-init="init()">
+	<div style="text-align: center;" class="col-xs-12">
+		<h1>Profile Page</h1>
+	</div>
+	
+	<div class="row">
+		<h4>
+			<div class="col-md-6" style="text-align: left">Welcome
+				{{userId}}</div>
+			<div class="col-md-3 btn btn-primary" ng-click="goToDos()">To Dos</div>
+			<div class="col-md-3 btn btn-info" ng-click="doLogout()"style="text-align: left">
+				Logout<span class="glyphicon glyphicon-power"></span>
+			</div>
+		</h4>
+		<!-- <h3>Below is your To Do List for Today</h3> -->
+	</div>
+	<div class="row" ng-if="!emailFlag">
+		<div class="panel panel-login">
+			<div class="panel-heading">Your Profile</div>
+			<hr>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-12" style="text-align: center;">
+				<table class="table">
+					<tr>
+						<td>Full Name :</td>
+						<td>{{profile.fullName}}</td>
+					</tr>
+					<tr>
+						<td>Mail Address :</td>
+						<td>{{profile.id}}</td>
+					</tr>
+					<tr>
+						<td>Mobile Number :</td>
+						<td>{{profile.mobileNumber}}</td>
+					</tr>
+					<tr>
+						<td>Date Of Birth :</td>
+						<td>{{profile.dateOfBirth | date}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

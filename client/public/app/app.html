@@ -1,0 +1,54 @@
+<div ng-controller="AppCtrl">
+<div class="row">{{message}}</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: center;">Login</div>
+			<div class="panel-body">
+				<div class="row">
+					<input type="email" ng-model="emailId"
+						placeholder="Your Email Address" />
+				</div>
+				<div class="row">
+					<input type="password" ng-model="secretCode"
+						placeholder="Your Secret Code" />
+				</div>
+				<div class="row">
+					<button ng-click="verifyUser(emailId, secretCode)">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="float: none;">Register Yourself!</div>
+			<div class="panel-body panel panel-default">
+				<div class="row">
+					<input type="email" class="col-md-4" ng-model="fullName"
+						placeholder="Your Full Name" />
+				</div>
+				<div class="row">
+					<input type="email" class="col-md-4" ng-model="emailRegister"
+						placeholder="Your Email Address" />
+				</div>
+				<div class="row">
+					<input type="password" class="col-md-4"
+						ng-model="secretCodeRegister" placeholder="Your Secret Code" />
+				</div>
+				<div class="row">
+					<input type="number" class="col-md-4" maxlength="10" min="0"
+						ng-model="mobileNum" placeholder="Your mobile number" />
+				</div>
+				<div class="row">
+					<input type="date" class="col-md-4" ng-model="dob" />
+				</div>
+				<div class="row">
+					<button class="col-md-4" ng-click="createUser()">Create
+						Profile</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

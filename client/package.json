@@ -1,0 +1,9 @@
+{
+  "name": "ToDoApp",
+  "version": "0.0.1",
+  "description": "A Node.js and Angular js To Do application using express",
+  "dependencies": {
+	"express": "*"
+   },
+  "engine": "node >=0.6.x"
+}
