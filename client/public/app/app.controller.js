@@ -28,12 +28,13 @@ myApp.controller('AppCtrl', function($scope, $http, $rootScope, $location, $loca
 	
 	$scope.createUser = function(){
 	    console.log("Entered in create User method");
+		console.log($scope);
 	    var profile = {
+	    		"fullName":$scope.fullName,
 	    		"id":$scope.emailRegister,
 	    		"secretCode":$scope.secretCodeRegister,
 	    		"mobileNumber":$scope.mobileNum,
-	    		"dateOfBirth":$scope.dob,
-	    		"fullName":$scope.fullName
+	    		"dateOfBirth":$scope.dob
 	    }
 		$http.post("http://localhost:1020/api/createUser", profile).
 		then(function(response) {
