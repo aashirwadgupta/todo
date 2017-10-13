@@ -11,8 +11,8 @@ myApp.controller('ToDoCtrl', function($scope, $http, $rootScope, $localStorage, 
 		    	$scope.toDoModelFlag = true;
 		    } else {
 		    	$scope.toDoModelFlag = false;
-		    	$scope.toDoModelList = response.data;
-		    	//$scope.taskList = response.data.taskList;
+		    	$scope.toDoModel = response.data;
+		    	$scope.taskList = response.data.taskList;
 		    }
 		  }, function(response) {
 			    console.log(response);			  
@@ -63,8 +63,8 @@ $scope.taskList = {};
 		$http.post("http://localhost:1020/api/updateToDo", $scope.toDoModel)
 		.then(function(response) {
 		    console.log(response);
-		    if(""!=response.data){
-		    	$scope.toDoModelFlag = false;
+		    if(null!=response.data){
+		    	//$localStorage.email = response.data.id;
 		    }
 		  }, function(response) {
 			    console.log(response);			  

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todoproject.sample.dao.ToDoRepository;
 import com.todoproject.sample.dao.UserRepository;
 import com.todoproject.sample.model.ProfileModel;
 import com.todoproject.sample.model.UserModel;
@@ -15,6 +16,9 @@ public class UserServices {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private ToDoRepository toDoRepo;
 	
 	public UserModel doLogin(String userId, String secretCode) {
 		UserModel userModel = userRepo.findOne(userId);
@@ -57,6 +61,12 @@ public class UserServices {
 		userModel.setMailId(profile.getId());
 		userModel.setToDoIds(new HashMap<String, String>());
 		userRepo.save(userModel);
+		return null;
+	}
+
+	public String deleteUser(String userId) {
+		userRepo.deleteAll();
+		toDoRepo.deleteAll();
 		return null;
 	}
 

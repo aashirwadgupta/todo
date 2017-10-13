@@ -48,4 +48,9 @@ public class UserRestController {
 	public String createUser(@RequestBody ProfileModel profile){
 		return userService.createUser(profile);
 	}
+	
+	@RequestMapping(value="/api/deleteUser", method=RequestMethod.POST)
+	public String deleteUser(@RequestParam("id") String userId){
+		return userService.deleteUser(userId);
+	}
 }
