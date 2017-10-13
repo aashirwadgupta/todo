@@ -45,7 +45,7 @@ public class UserRestController {
 	}
 	
 	@RequestMapping(value="/api/createUser", method=RequestMethod.POST)
-	public String createUser(@RequestBody ProfileModel profile){
+	public UserModel createUser(@RequestBody ProfileModel profile){
 		return userService.createUser(profile);
 	}
 	

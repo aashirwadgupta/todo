@@ -22,8 +22,12 @@ public class UserServices {
 	
 	public UserModel doLogin(String userId, String secretCode) {
 		UserModel userModel = userRepo.findOne(userId);
-		if(secretCode.equals(userModel.getSecretCode())){
-			return userModel;
+		if(null!=userModel) {
+			if(secretCode.equals(userModel.getSecretCode())){
+				return userModel;
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
@@ -53,15 +57,16 @@ public class UserServices {
 		return userRepo.findOne(userId).getProfile();
 	}
 
-	public String createUser(ProfileModel profile) {
+	public UserModel createUser(ProfileModel profile) {
 		UserModel userModel = new UserModel();
 		userModel.setId(profile.getId());
 		userModel.setProfile(profile);
 		userModel.setSecretCode(profile.getSecretCode());
 		userModel.setMailId(profile.getId());
+		userModel.setFullName(profile.getFullName());
 		userModel.setToDoIds(new HashMap<String, String>());
 		userRepo.save(userModel);
-		return null;
+		return userModel;
 	}
 
 	public String deleteUser(String userId) {

@@ -5,6 +5,7 @@ myApp.controller('AppCtrl', function($scope, $http, $rootScope, $location, $loca
 		if(null!=$localStorage.email){
 			$scope.emailFlag = false;
 			$localStorage.email = null;
+			$scope.message = null;
 		}
 	};
   $scope.verifyUser = function(emailId, secretCode){
@@ -15,8 +16,12 @@ myApp.controller('AppCtrl', function($scope, $http, $rootScope, $location, $loca
 		    console.log(response);
 		    if(""!= response.data){
 			    $localStorage.email = response.data.id;
-			    $location.path("todos");		    	
-		    }
+			    $location.path("todos");
+				$scope.message = null;
+		    } 
+			if(""==response.data) {
+				$scope.message = "User Not Found.";
+			}
 		  }, function(response) {	  
 		  });
 	}

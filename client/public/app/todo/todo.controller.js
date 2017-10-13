@@ -20,7 +20,7 @@ myApp.controller('ToDoCtrl', function($scope, $http, $rootScope, $localStorage, 
 	}
 $scope.taskList = {};
 	
-	$scope.addPendingToDo = function(isDone, toDoText){
+	$scope.addPendingToDo = function(isDone, toDo){
 		if(isDone==undefined){
 			isDone = false;
 		}
@@ -29,12 +29,12 @@ $scope.taskList = {};
 			d = d +1000;
 			$scope.taskList[d] = {
 					isCompleted:isDone,
-					toDo:toDoText
+					toDoText:toDo
 			}
 		} else {
 			$scope.taskList[d] = {
 					isCompleted:isDone,
-					toDo:toDoText
+					toDoText:toDo
 			};
 		}
 		console.log($scope.taskList);
@@ -51,16 +51,17 @@ $scope.taskList = {};
 		}
 		console.log($scope.toDoModel);
     	$scope.toDoModelFlag = false;
-		$scope.updateToDo();
+		$scope.updateToDo($scope.toDoModel);
 	}
 	
 	$scope.deleteToDo = function(key){
+		console.log(key);
 		delete $scope.toDoModel.taskList[key];
-		$scope.updateToDo();
+		$scope.updateToDo($scope.toDoModel);
 	}
 	
-	$scope.updateToDo = function(){
-		$http.post("http://localhost:1020/api/updateToDo", $scope.toDoModel)
+	$scope.updateToDo = function(toDoModelObj){
+		$http.post("http://localhost:1020/api/updateToDo", toDoModelObj)
 		.then(function(response) {
 		    console.log(response);
 		    if(null!=response.data){
@@ -77,12 +78,12 @@ $scope.taskList = {};
 			d = d +1000;
 			$scope.taskList[d] = {
 					isCompleted:isDone,
-					toDo:toDoText
+					toDoText:task
 			}
 		} else {
 			$scope.taskList[d] = {
 					isCompleted:isDone,
-					toDo:toDoText
+					toDoText:task
 			};
 		}
 		$scope.toDoModel.taskList = $scope.taskList;

@@ -20,16 +20,14 @@
 					<th style="text-align: center">Completed?</th>
 					<th style="text-align: center">Remove?</th>
 				</tr>
-				<tbody ng-repeat="toDoModel in toDoModelList">
-					<tr ng-repeat="(key, value) in toDoModel.taskList"
-						ng-model="toDoModel">
-						<td>{{key | date:'dd-MM-yyyy HH:mm:ss'}}</td>
-						<td><input style="width: 90%" type="text"
-							ng-model="value.toDo" /></td>
-						<td><input type="checkbox" ng-model="value.isCompleted" /></td>
-						<td><button ng-click="deleteToDo(key)">X</button></td>
-					</tr>
-				</tbody>
+				<tr ng-repeat="(key, value) in toDoModel.taskList"
+					ng-model="toDoModel">
+					<td>{{key | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+					<td><input style="width: 90%" type="text"
+						ng-model="value.toDoText" /></td>
+					<td><input type="checkbox" ng-model="value.isCompleted" /></td>
+					<td><button ng-click="deleteToDo(key)">X</button></td>
+				</tr>
 			</table>
 			<button ng-click="updateToDo()">Save Changes</button>
 			<div class="panel panel-default">

@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class UserModel {
 	private String id;
+	private String fullName;
 	private String mailId;
 	private String secretCode;
 	private String lastSeen;
@@ -48,5 +49,11 @@ public class UserModel {
 	}
 	public void setToDoIds(Map<String, String> toDoIds) {
 		this.toDoIds = toDoIds;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 }
