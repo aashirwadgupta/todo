@@ -3,6 +3,9 @@ package com.todoproject.sample.services;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +24,15 @@ public class ToDoServices {
 	@Autowired
 	private UserRepository userRepo;
 	
-	public ToDoModel getToDoForUser(String toDoId) {
-		return toDoRepo.findOne(toDoId);
+	public List<ToDoModel> getToDoForUser(String toDoId) {
+		UserModel user = userRepo.findOne(toDoId);
+		List<ToDoModel> toModelList = new ArrayList<ToDoModel>();
+		for(String key : user.getToDoIds().keySet()) {
+			String value = user.getToDoIds().get(key);
+			ToDoModel obj = toDoRepo.findOne(value);
+			toModelList.add(obj);
+		}
+		return toModelList;
 	}
 
 	public ToDoModel createToDoForUser(String userId, ToDoModel toDoModel) {

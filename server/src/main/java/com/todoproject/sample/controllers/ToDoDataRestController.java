@@ -1,5 +1,7 @@
 package com.todoproject.sample.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class ToDoDataRestController {
 	private ToDoServices toDoService;
 	
 	@RequestMapping(value="/api/getToDo", method=RequestMethod.GET)
-	public ToDoModel getToDoForUser(@RequestParam("id")String toDoId){
+	public List<ToDoModel> getToDoForUser(@RequestParam("id")String toDoId){
 		return toDoService.getToDoForUser(toDoId);
 	}
 	
